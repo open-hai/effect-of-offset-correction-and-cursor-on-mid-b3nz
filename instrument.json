@@ -1,0 +1,326 @@
+{
+  "protocol": {
+    "design": "Two lab studies, both entirely within-subjects, run at the University of Stuttgart with an OptiTrack marker-based 6DOF motion capture system, an HTC Vive HMD and a projector, all driven by one Unity 5.6 scene so that the real-world and virtual conditions show geometrically identical stimuli. STUDY 1 (data collection, 20 participants: 4 female, 16 male, age 17-30, M = 22.1, SD = 3.1; height 156-190 cm; all right-handed, no locomotor coordination problems; eye dominance screened with the Miles and Porta tests, giving 10 right, 6 left, 4 unclear) has a single independent variable, ENVIRONMENT, with the levels RealWorld and VirtualReality, counterbalanced across participants; target order is randomised. Participants stand at a marked spot 2 m from a 269.4 x 136.2 cm projection screen (replicated in VR to millimetre accuracy with a laser measurement tool) and point with the dominant hand at targets that have no area, receiving no feedback of any kind. STUDY 2 (evaluation, 16 new participants: 1 female, 15 male, age 19-26, M = 22.7, SD = 1.8; height 156-181 cm; all right-handed; eye dominance 10 right, 1 left, 5 unclear) is a 2 x 2 x 2 factorial with ENVIRONMENT (RealWorld, VirtualWorld), CORRECTION (Yes, No) and CURSOR (Yes, No). Because a participant cannot perceive whether correction is applied when no cursor is shown, the eight factorial cells are administered as six conditions, with the correction applied or withheld internally to recover the missing two; ENVIRONMENT is counterbalanced and CORRECTION and CURSOR are randomised within it. The cursor is a green crosshair. Both studies begin with informed consent, a demographic questionnaire and 14 anthropometric measurements used to fit the participant's avatar (androgynous hands, adjusted bone structure) in VR.",
+    "trials": "STUDY 1: 35 targets in a 7 x 5 grid (spacing 44.9 cm horizontally, 136.2/4 = 34.05 cm vertically), each pointed at 6 times per environment, giving 35 x 6 x 2 = 420 trials per participant and 8,400 postures in total. The 420 trials are split into 4 sessions of 105 gestures, with a raw NASA-TLX after each. A trial: the target appears; the participant points as they naturally would, with no restriction on body pose; when they begin to hold the gesture they click a remote control with the non-dominant hand; the pose is held for one second, after which the target disappears. Samples from 100 ms to 900 ms of that hold are used. STUDY 2: 6 administered conditions x 35 targets x 2 repetitions = 420 trials per participant (6,720 in total), about one hour, with a raw NASA-TLX after each condition. A trial: the participant points as quickly and accurately as possible and presses the remote-control button when confident; after the press a random 0.5-1.0 s delay precedes the next target, to prevent false starts.",
+    "measures": [
+      {
+        "name": "pointing offset (accuracy)",
+        "scale": "centimetres on the projection screen: Euclidean distance between the target's position and the intersection of the cast ray with the screen",
+        "level": "per_trial"
+      },
+      {
+        "name": "ray cast method (Study 1 derived measure)",
+        "scale": "categorical: EFRC (eye-finger), IFRC (index finger), FRC (forearm), HRC (head); all four are computed from every recorded posture",
+        "level": "per_trial"
+      },
+      {
+        "name": "task completion time (TCT, Study 2)",
+        "scale": "seconds from the appearance of the target to the confirming button press on the remote control",
+        "level": "per_trial"
+      },
+      {
+        "name": "raw NASA-TLX workload",
+        "scale": "raw (unweighted) NASA-TLX, administered once per session: 4 sessions in Study 1, 6 in Study 2; the paper's means of 35-40 imply a 0-100 range",
+        "level": "per_participant"
+      },
+      {
+        "name": "eye dominance",
+        "scale": "categorical: right / left / unclear, from the Miles and Porta tests",
+        "level": "per_participant"
+      },
+      {
+        "name": "anthropometry",
+        "scale": "14 per-participant measurements in cm: lengths of index finger, hand, lower and upper arm; diameters of finger, hand, wrist, elbow, lower arm, upper arm and head; shoulder and eye positions relative to the shoulder markers; arm-marker positions relative to the elbow",
+        "level": "per_participant"
+      },
+      {
+        "name": "demographics",
+        "scale": "age in years, body height in cm, gender, handedness",
+        "level": "per_participant"
+      }
+    ],
+    "plan": "Study 1: four one-way repeated-measures ANOVAs, one per ray cast, testing ENVIRONMENT (RealWorld vs VirtualReality) on the pointing offset, plus a one-way RM-ANOVA of raw TLX across the four sessions as a fatigue check. Modelling: the deviation angles alpha_pitch and alpha_yaw of the cast ray are mapped to correction angles delta_pitch and delta_yaw by four candidate functions - f1, a one-dimensional second-degree polynomial per axis; f2 and f3, complete two-dimensional polynomials of degree 1 and 2; f4, the complete two-dimensional polynomial of degree 4 given in Equation 1 with 15 parameters - fitted with a nonlinear least-squares solver, independently per ray cast and per environment, and compared by leave-one-out cross-validation. Study 2: two three-way repeated-measures ANOVAs with the within-subject factors CORRECTION x CURSOR x ENVIRONMENT, on accuracy and on TCT; no post-hoc comparisons, since every factor has two levels; plus a one-way RM-ANOVA of raw TLX across the six sessions. No preregistration, no power analysis, no alpha correction for the family of tests, and no assumption checks are reported.",
+    "reported": [
+      {
+        "metric": "pointing offset, EFRC",
+        "effect": "mean over both environments (RealWorld 10.21, VirtualReality 8.45)",
+        "test": "descriptive",
+        "value": "9.33 cm",
+        "interval": "SD 5.56 (RW) and 4.54 (VR); no confidence interval reported",
+        "n": "20 participants, 8,400 postures before outlier removal",
+        "citation": "Table 1 and Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, IFRC",
+        "effect": "mean over both environments (RW 29.14, VR 27.03)",
+        "test": "descriptive",
+        "value": "28.09 cm",
+        "interval": "SD 19.24 (RW) and 18.95 (VR)",
+        "n": "20 participants",
+        "citation": "Table 1 and Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, FRC",
+        "effect": "mean over both environments (RW 60.34, VR 69.66)",
+        "test": "descriptive",
+        "value": "65.0 cm",
+        "interval": "SD 20.16 (RW) and 25.42 (VR)",
+        "n": "20 participants",
+        "citation": "Table 1 and Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, HRC",
+        "effect": "mean over both environments (RW 47.15, VR 37.77)",
+        "test": "descriptive",
+        "value": "42.46 cm",
+        "interval": "SD 23.71 (RW) and 19.19 (VR)",
+        "n": "20 participants",
+        "citation": "Table 1 and Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, EFRC",
+        "effect": "ENVIRONMENT (RealWorld vs VirtualReality)",
+        "test": "one-way RM-ANOVA",
+        "value": "F(1,19) = 5.845, p = .026",
+        "interval": null,
+        "n": "20 participants",
+        "citation": "Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, IFRC",
+        "effect": "ENVIRONMENT: no significant difference",
+        "test": "one-way RM-ANOVA",
+        "value": "F(1,19) = .447, p = .512",
+        "interval": null,
+        "n": "20 participants",
+        "citation": "Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, FRC",
+        "effect": "ENVIRONMENT",
+        "test": "one-way RM-ANOVA",
+        "value": "F(1,19) = 33.13, p < .001",
+        "interval": null,
+        "n": "20 participants",
+        "citation": "Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "pointing offset, HRC",
+        "effect": "ENVIRONMENT",
+        "test": "one-way RM-ANOVA",
+        "value": "F(1,19) = 31.48, p < .001",
+        "interval": null,
+        "n": "20 participants",
+        "citation": "Accuracy of Ray Casts, p. 5"
+      },
+      {
+        "metric": "workload (raw TLX), Study 1",
+        "effect": "session (fatigue check): 35.42, 35.38, 35.46, 36.0",
+        "test": "one-way RM-ANOVA, null result",
+        "value": "F(3,57) = .047, p = .986",
+        "interval": "SD 10.46, 12.31, 15.37, 16.15",
+        "n": "20 participants x 4 sessions",
+        "citation": "Fatigue effect, p. 5"
+      },
+      {
+        "metric": "offset correction by model f4",
+        "effect": "overall reduction of the offset, and per ray cast: FRC 55.9%, IFRC 50.1%, EFRC 10.9%, HRC 0.2%",
+        "test": "leave-one-out cross-validation",
+        "value": "29.3% overall; remaining offsets 8.2 (EFRC), 14.0 (IFRC), 28.6 (FRC), 42.3 (HRC) cm",
+        "interval": "SDs in Table 1; no confidence interval reported",
+        "n": "20 participants",
+        "citation": "Modeling, p. 6, and Table 1"
+      },
+      {
+        "metric": "pointing accuracy, Study 2",
+        "effect": "CORRECTION",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = 5.321, p = .027",
+        "interval": null,
+        "n": "16 participants, 6,720 trials",
+        "citation": "Accuracy, p. 8"
+      },
+      {
+        "metric": "pointing accuracy, Study 2",
+        "effect": "CURSOR",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = 131.9, p < .001",
+        "interval": null,
+        "n": "16 participants",
+        "citation": "Accuracy, p. 8"
+      },
+      {
+        "metric": "pointing accuracy, Study 2",
+        "effect": "ENVIRONMENT (reported as significant; the printed F and p are mutually inconsistent - see verdict.json)",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = 1.3, p = .027",
+        "interval": null,
+        "n": "16 participants",
+        "citation": "Accuracy, p. 8"
+      },
+      {
+        "metric": "pointing accuracy, Study 2",
+        "effect": "CORRECTION x CURSOR interaction",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = 4.592, p = .048",
+        "interval": null,
+        "n": "16 participants",
+        "citation": "Accuracy, p. 8"
+      },
+      {
+        "metric": "remaining offset, Study 2",
+        "effect": "improvement from the correction model, without a cursor (RealWorld 16.3%, VirtualWorld 9.5%) and with a cursor",
+        "test": "descriptive, from the cell means of Table 3",
+        "value": "13.1% without a cursor, 4.5% with a cursor",
+        "interval": "cell means 7.08/5.92 (RW) and 6.37/5.76 (VW) cm without cursor, SDs 3.26-3.42",
+        "n": "16 participants",
+        "citation": "Discussion p. 9, Conclusion p. 9, Table 3"
+      },
+      {
+        "metric": "task completion time, Study 2",
+        "effect": "CURSOR increases selection time",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = 7.834, p = .013; means 1.48-1.64 s without cursor vs 1.67-1.89 s with cursor",
+        "interval": "SD 0.43-0.73 s",
+        "n": "16 participants",
+        "citation": "Task completion time, p. 8, and Table 2"
+      },
+      {
+        "metric": "task completion time, Study 2",
+        "effect": "CURSOR x ENVIRONMENT interaction",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = 15.61, p < .001 (recomputes to p = .0013)",
+        "interval": null,
+        "n": "16 participants",
+        "citation": "Task completion time, p. 8"
+      },
+      {
+        "metric": "task completion time, Study 2",
+        "effect": "CORRECTION and ENVIRONMENT: no effect",
+        "test": "three-way RM-ANOVA",
+        "value": "F(1,15) = .158, p = .697 and F(1,15) = .004, p = .956",
+        "interval": null,
+        "n": "16 participants",
+        "citation": "Task completion time, p. 8"
+      },
+      {
+        "metric": "square target size holding 90% of pointing actions",
+        "effect": "by cursor and environment, and the shrink correction buys (6.9%, 11.6%, 6.5%, 8.9%; mean 8.5%)",
+        "test": "descriptive estimate from the trial endpoints",
+        "value": "17.6 cm (no cursor, RW), 18.8 cm (no cursor, VR), 4.1 cm (cursor, RW), 4.5 cm (cursor, VR), at 2 m distance",
+        "interval": null,
+        "n": "16 participants",
+        "citation": "Accuracy, p. 8, and Future Work, p. 9"
+      },
+      {
+        "metric": "workload (raw TLX), Study 2",
+        "effect": "session (fatigue check): 36.25, 38.28, 39.84, 37.81, 39.74, 37.76",
+        "test": "one-way RM-ANOVA, null result",
+        "value": "F(5,15) = .654, p = .659 (the df do not match 16 participants x 6 sessions)",
+        "interval": "SD 11.37-17.68",
+        "n": "16 participants x 6 sessions",
+        "citation": "Fatigue effect, p. 8"
+      }
+    ]
+  },
+  "analysis": {
+    "command": "python src/analyze.py {{INPUT}} --outdir results --model f4 --cv participant",
+    "notes": "One entrypoint serves both studies; the study is detected from the columns present (a file carrying `cursor` and `correction` is treated as Study 2, anything else as Study 1). Study 1 requires the shared trial columns plus at least one ray cast's column group: EFRC needs eye_* and finger_*; IFRC needs finger_* and finger_dir_*; FRC needs forearm_* and forearm_dir_*; HRC needs eye_* and head_dir_*. Every method whose columns are present is analysed. Positions are in centimetres in a right-handed frame with +x to the participant's right, +y up and +z towards the screen plane at z = 200 cm; target_x and target_y are screen coordinates in cm with the origin at the screen centre. Verify a candidate dataset with `python src/selftest.py` first.",
+    "input": {
+      "columns": [
+        { "name": "participant", "type": "string|integer", "unit": "id", "required": true },
+        { "name": "environment", "type": "string", "unit": "level: RealWorld | VirtualReality (Study 2 also accepts VirtualWorld)", "required": true },
+        { "name": "trial", "type": "integer", "unit": "id, unique within participant and environment", "required": true },
+        { "name": "target_id", "type": "integer", "unit": "0-34, index in the 7x5 grid; used to group the outlier filter", "required": false },
+        { "name": "target_x", "type": "float", "unit": "cm on the screen plane", "required": true },
+        { "name": "target_y", "type": "float", "unit": "cm on the screen plane", "required": true },
+        { "name": "t_ms", "type": "float", "unit": "ms since the start of the one-second hold; only 100-900 is used (Study 1 input is per sample)", "required": true },
+        { "name": "eye_x", "type": "float", "unit": "cm, cyclops-eye position", "required": false },
+        { "name": "eye_y", "type": "float", "unit": "cm", "required": false },
+        { "name": "eye_z", "type": "float", "unit": "cm", "required": false },
+        { "name": "head_x", "type": "float", "unit": "cm, head position; used only for the head-alignment step", "required": false },
+        { "name": "head_y", "type": "float", "unit": "cm", "required": false },
+        { "name": "head_z", "type": "float", "unit": "cm", "required": false },
+        { "name": "head_dir_x", "type": "float", "unit": "unit vector component, head forward direction (HRC)", "required": false },
+        { "name": "head_dir_y", "type": "float", "unit": "unit vector component", "required": false },
+        { "name": "head_dir_z", "type": "float", "unit": "unit vector component", "required": false },
+        { "name": "finger_x", "type": "float", "unit": "cm, index fingertip position", "required": false },
+        { "name": "finger_y", "type": "float", "unit": "cm", "required": false },
+        { "name": "finger_z", "type": "float", "unit": "cm", "required": false },
+        { "name": "finger_dir_x", "type": "float", "unit": "unit vector component, fingertip forward direction (IFRC)", "required": false },
+        { "name": "finger_dir_y", "type": "float", "unit": "unit vector component", "required": false },
+        { "name": "finger_dir_z", "type": "float", "unit": "unit vector component", "required": false },
+        { "name": "forearm_x", "type": "float", "unit": "cm, forearm centre position", "required": false },
+        { "name": "forearm_y", "type": "float", "unit": "cm", "required": false },
+        { "name": "forearm_z", "type": "float", "unit": "cm", "required": false },
+        { "name": "forearm_dir_x", "type": "float", "unit": "unit vector component, forearm direction (FRC)", "required": false },
+        { "name": "forearm_dir_y", "type": "float", "unit": "unit vector component", "required": false },
+        { "name": "forearm_dir_z", "type": "float", "unit": "unit vector component", "required": false },
+        { "name": "cursor", "type": "boolean", "unit": "factor level; its presence switches the entrypoint to the Study 2 pipeline", "required": false },
+        { "name": "correction", "type": "boolean", "unit": "factor level; its presence switches the entrypoint to the Study 2 pipeline", "required": false },
+        { "name": "hit_x", "type": "float", "unit": "cm on the screen plane, the recorded endpoint (Study 2)", "required": false },
+        { "name": "hit_y", "type": "float", "unit": "cm on the screen plane (Study 2)", "required": false },
+        { "name": "tct_s", "type": "float", "unit": "seconds from target onset to the confirming button press (Study 2)", "required": false }
+      ]
+    },
+    "outputs": [
+      { "path": "results/<stem>_study1.json", "what": "Table 1 rebuilt (n, mean and SD of the offset before and after LOOCV correction, per ray cast x environment), the per-method means, the overall correction percentage, the f1-f4 comparison, and the fitted coefficients of every model" },
+      { "path": "results/<stem>_trials.csv", "what": "per-trial intermediate: ray angles alpha_yaw/alpha_pitch, correction angles delta_yaw/delta_pitch, screen intersection before and after correction, offset distances" },
+      { "path": "results/<stem>_figure4.png", "what": "Figure 4 redrawn: target grid versus the mean intersection per environment, one panel per ray cast" },
+      { "path": "results/<stem>_study2.json", "what": "per-participant cell means, both three-way RM-ANOVA tables (accuracy and TCT), Tables 2 and 3 rebuilt, the 90%-capture square target sizes, and the correction improvement per cursor condition, pooled and as a mean of ratios" },
+      { "path": "results/paper_checks.json and results/paper_checks.md", "what": "the 59 checks of the paper against its own tables and against the predecessor paper, each with citation, reported value, recomputed value and verdict (written by src/check_paper.py, which needs no input data)" },
+      { "path": "results/run_log.txt", "what": "the recorded console output of ./run_all.sh" }
+    ]
+  },
+  "servability": {
+    "all_servable": false,
+    "components": [
+      {
+        "component": "O1. Data-collection study: 20 participants x 420 mid-air pointing gestures in a real room and a VR replica",
+        "servable": false,
+        "failed_criteria": ["screen_based", "browser_measures", "apparatus_recovered"],
+        "why": "The manipulation is being inside VR versus a real room, which needs an HTC Vive; the measurement is 3D marker trajectories from an OptiTrack rig at 30 FPS, which no browser can capture; and the stimulus software (the Unity scene replicating the room, the target grid, the avatar fitted to 14 body measurements) was never released and is described only in prose. It is a single one-hour session with no experimenter in the loop during the task, so those two criteria pass."
+      },
+      {
+        "component": "O2. Evaluation study: 16 participants, 2x2x2 selection task with real-time correction and a cursor",
+        "servable": false,
+        "failed_criteria": ["screen_based", "browser_measures", "apparatus_recovered"],
+        "why": "Same apparatus as O1, plus a real-time correction pipeline that must transform tracked marker poses before rendering the crosshair. The endpoint measure is again a ray-screen intersection derived from motion capture, not a browser event. Nothing about the cursor (size, update rate, smoothing) is specified well enough to rebuild."
+      },
+      {
+        "component": "O3. Raw NASA-TLX after every session in both studies",
+        "servable": false,
+        "failed_criteria": ["page_administrable"],
+        "why": "The instrument itself is a standard, fully specified questionnaire that a browser can present and score, and it is completed in the same session by the participant alone. But the workload it measures is produced by a pointing task carried out in lab apparatus that the page neither controls nor can verify, so serving the questionnaire alone would measure nothing."
+      },
+      {
+        "component": "O4. Eye-dominance screening with the Miles and Porta tests",
+        "servable": false,
+        "failed_criteria": ["no_experimenter", "browser_measures"],
+        "why": "Both are physical alignment tests whose outcome is an observation of which eye keeps a distant object aligned; the Porta test as normally run needs an experimenter to observe and record. A browser can neither present a real distant object at a controlled distance nor verify what the participant saw."
+      },
+      {
+        "component": "O5. Fourteen anthropometric measurements per participant and the avatar fitted from them",
+        "servable": false,
+        "failed_criteria": ["screen_based", "no_experimenter", "browser_measures"],
+        "why": "An experimenter measures limb lengths and diameters with a tape and a laser tool before the session; none of it is a screen task and none of it can be captured in a browser."
+      },
+      {
+        "component": "O6. Informed consent and demographic questionnaire",
+        "servable": false,
+        "failed_criteria": ["apparatus_recovered"],
+        "why": "This is the one outer-loop component whose format a browser could serve outright - a single-session, self-administered form. It fails only because the materials do not exist: the paper says 'an informed consent as well as a demographic questionnaire' and never states the items, so there is nothing to rebuild faithfully."
+      },
+      {
+        "component": "O7. Recruitment and eligibility: university volunteer pool, right-handed, no locomotor coordination problems",
+        "servable": false,
+        "failed_criteria": ["apparatus_recovered"],
+        "why": "Screening on handedness and coordination could be a browser form, but how either was established - self-report, an inventory such as Edinburgh, or experimenter judgement - is never stated, so the screening instrument cannot be reconstructed."
+      }
+    ]
+  },
+  "absent_reasons": {
+    "protocol": null,
+    "analysis": null
+  }
+}

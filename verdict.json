@@ -1,0 +1,453 @@
+{
+  "schema": 1,
+  "verdict": "partial",
+  "summary": "The inner loop of this CHI 2018 paper is a geometry-plus-polynomial pipeline (four ray casts from tracked body markers, offsets on a projection screen, a 15-parameter complete bivariate quartic fitted per angle, leave-one-out cross-validation) followed by two three-way RM-ANOVAs. All of it is re-implementable from the prose and is implemented and run here, but the authors released no pointing data and none of the ~240 fitted coefficients that are the paper's stated contribution, so no cell of Tables 1-3 can be recomputed from source. What can be checked without data was checked exhaustively: of 59 checks, all 35 derivations the paper's own tables can support hold (per-method mean offsets, the LOOCV correction percentages including the 29.3% headline, the Study 2 improvements of 13.1% and 4.5%, the cross-paper ratios against Mayer et al. 2015, and every design count), 4 more are not derivable from anything published, and 6 of the 20 reported F/p pairs fail recomputation - including a main effect the paper calls significant, ENVIRONMENT on accuracy, reported as F(1,15)=1.3, p=.027 where that F gives p=.272. The outer loop is two lab studies with 36 participants wearing an HTC Vive under an OptiTrack rig; it was not attempted, not simulated and not scored, and the paper's human findings are neither confirmed nor disputed here.",
+  "graded_at": "2026-08-16T10:05:00Z",
+  "components": { "verified": 8, "partial": 4, "blocked": 3, "total": 15 },
+  "boundary": [
+    {
+      "claim": "Four ray casts (EFRC, IFRC, FRC, HRC) constructed from tracked markers and intersected with the projection screen",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "Implemented in src/geometry.py; exact on the 7x5 grid and on the angle round-trip (python src/selftest.py). Cannot be checked against the paper: the marker-to-anatomy transforms (cyclops eye from HMD markers, 'true finger tip' from marker plus per-user measurement, forearm centre 'approximating the forearm with a frustum of a cone') are prose only, and no marker data was released.",
+      "citation": "Apparatus, p. 4"
+    },
+    {
+      "claim": "Preprocessing: 100-900 ms sample window, offset defined as ray-screen intersection to target, two-standard-deviation outlier bound, head alignment across participants",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "Implemented in src/preprocess.py and run end to end (./run_all.sh; 32,111 synthetic trials survive filtering). Three of the four steps are under-specified (decisions D1-D4) and the paper never reports how many trials the filter removed, so no count can be matched.",
+      "citation": "Preprocessing, p. 5"
+    },
+    {
+      "claim": "Average offset per ray cast over both environments: 9.33 cm EFRC, 28.09 cm IFRC, 65.0 cm FRC, 42.46 cm HRC",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Recomputed from Table 1 to within 0.005 cm for all four methods (python src/check_paper.py, ids s1-mean-*).",
+      "citation": "Accuracy of Ray Casts, p. 5, from Table 1"
+    },
+    {
+      "claim": "The correction model family f1-f4, with f4 the 15-parameter function of Equation 1, fitted by a nonlinear least-squares solver",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "The 15 terms of Equation 1 are exactly the complete bivariate quartic; the basis is reconstructed term by term and asserted in src/selftest.py. The model is linear in x0..x14, and the paper's nonlinear solver agrees with a linear least-squares solve to 6.5e-10, so the stated solver choice is immaterial.",
+      "citation": "Modeling, p. 6, Equation 1"
+    },
+    {
+      "claim": "The fitted correction models themselves: 4 ray casts x 2 environments x 2 angles x 15 coefficients",
+      "loop": "inner",
+      "outcome": "blocked",
+      "evidence": "Blocker: never published, in the paper or at any of the 22 locations searched (SOURCES.md). The paper's headline contribution therefore cannot be applied by a reader even in principle. The predecessor paper did print its coefficients (Mayer et al. 2015, Table 3); they are re-implemented here in src/mayer2015_model.py to show what the missing artifact would look like.",
+      "citation": "Modeling, p. 6"
+    },
+    {
+      "claim": "LOOCV correction achieved: FRC 55.9%, IFRC 50.1%, EFRC 10.9%, HRC 0.2%, overall 29.3%; remaining offsets 8.2, 14.0, 28.6, 42.3 cm",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "All nine figures reproduce from Table 1 (check ids s1-correction-*, s1-remaining-*, s1-correction-overall): the per-method value is the mean of the two per-environment percentages and the overall value is the mean of those four. The aggregation order and the CV granularity are unstated (D5, D6).",
+      "citation": "Modeling, p. 6, from Table 1",
+      "mismatch": {
+        "kind": "typo",
+        "reported": "EFRC correction 10.9%, HRC remaining offset 42.3 cm",
+        "observed": "10.96% and 42.385 cm; the paper truncates rather than rounds, here and in about six other derived figures",
+        "delta": "<= 0.09 in the last printed digit"
+      }
+    },
+    {
+      "claim": "Four one-way RM-ANOVAs comparing RealWorld with VirtualReality per ray cast (EFRC F(1,19)=5.845 p=.026; IFRC F=.447 p=.512; FRC F=33.13 p<.001; HRC F=31.48 p<.001)",
+      "loop": "inner",
+      "outcome": "blocked",
+      "evidence": "Blocker: the 8,400 postures were never released, so no F can be recomputed. All four reported F/p pairs are internally consistent, which is the most that can be established from the text.",
+      "citation": "Accuracy of Ray Casts, p. 5"
+    },
+    {
+      "claim": "Fatigue checks: raw-TLX means per session and a one-way RM-ANOVA in each study, both non-significant",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "Study 1's F(3,57)=.047, p=.986 is internally consistent and its df match 20 participants over 4 sessions. Study 2's is not, on two counts (see mismatch). The conclusion drawn (no fatigue effect) is a null result that neither error overturns.",
+      "citation": "Results, p. 5 and Results, p. 8",
+      "mismatch": {
+        "kind": "contradiction",
+        "reported": "F(5,15) = .654, p = .659 for six raw-TLX sessions with 16 participants",
+        "observed": "the design implies error df = 75, not 15 (Study 1 uses the analogous F(3,57) correctly); and F(5,15) = .654 gives p = .663",
+        "delta": "df2 -60; p +.004"
+      }
+    },
+    {
+      "claim": "Study 2 condition tables - TCT (Table 2) and remaining offset (Table 3) - produced under a design that collapses 8 factorial cells into 6 administered conditions",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "The design's fingerprint is visible in the paper's own numbers: with no cursor a participant cannot perceive whether correction is applied, and Table 2's no-cursor TCT is identical across CORRECTION in both environments (1.48/1.48 and 1.64/1.64), exactly as the collapse requires (check ids s2-tct-nocursor-identical-*). Table 3's no-cursor offsets do differ, as they must, since correction still moves the computed intersection.",
+      "citation": "Study Design, p. 7; Tables 2 and 3"
+    },
+    {
+      "claim": "Correction improvements: 13.1% overall without a cursor, 16.3% RealWorld, 9.5% VirtualWorld, 4.5% with a cursor",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "All four reproduce from Table 3 (check ids s2-improve-*). The two aggregate figures come out at 13.1% and 4.5% only if the cell means are pooled before the ratio is taken; averaging the two per-environment percentages instead gives 12.98% and 4.31% (decision D14).",
+      "citation": "Discussion p. 9 and Conclusion, from Table 3"
+    },
+    {
+      "claim": "Two three-way RM-ANOVAs over CORRECTION x CURSOR x ENVIRONMENT, on accuracy and on task completion time",
+      "loop": "inner",
+      "outcome": "partial",
+      "evidence": "The analysis is re-implemented (src/pipeline.py:study2 using statsmodels AnovaRM) and runs on study-2-shaped data, reproducing the F(1,15) structure the paper's df imply. The paper's values cannot be recomputed (no trials released), and 5 of the 14 reported F/p pairs fail recomputation.",
+      "citation": "Results, p. 8",
+      "mismatch": {
+        "kind": "contradiction",
+        "reported": "'a significant effect of ... ENVIRONMENT, F(1,15) = 1.3, p = .027 on the participants' pointing accuracy', restated as a finding in the Discussion",
+        "observed": "F(1,15) = 1.3 gives p = .272; on the printed F the effect is not significant. Four further pairs also fail: accuracy CORRECTION p = .027 vs .036; accuracy CORRECTION x ENVIRONMENT p = .36 vs .337; TCT ENVIRONMENT p = .956 vs .950; TCT CURSOR x ENVIRONMENT reported p < .001 vs .00128",
+        "delta": "p +.245 on ENVIRONMENT; flips the significance decision at alpha = .05"
+      }
+    },
+    {
+      "claim": "Square target sizes holding 90% of pointing actions: 17.6 cm (no cursor, RW), 18.8 cm (no cursor, VR), 4.1 cm and 4.5 cm with cursor, and the per-condition shrinks of 6.9, 11.6, 6.5 and 8.9%",
+      "loop": "inner",
+      "outcome": "blocked",
+      "evidence": "Blocker: needs the per-trial two-dimensional endpoints; Table 3 publishes only the mean and SD of the scalar distance, from which a square capture region is not recoverable. The estimator is implemented and validated against its analytic value (src/pipeline.py:target_size_90; selftest gives 11.69 cm vs 11.69 cm). Forcing an isotropic Rayleigh assumption onto Table 3 - my assumption, not the paper's - would give 22.0 cm where the paper reports 17.6 cm.",
+      "citation": "Accuracy, p. 8"
+    },
+    {
+      "claim": "Targets can on average be 8.5% smaller when the correction models are applied",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Mean of the paper's own four per-condition shrinks (6.9, 11.6, 6.5, 8.9) = 8.475% (check id s2-target-shrink-mean).",
+      "citation": "Future Work, p. 9"
+    },
+    {
+      "claim": "Comparison with the predecessor study: errors before correction 4.8x (EFRC), 1.9x (IFRC) and 3.7x (FRC) larger in Mayer et al. 2015; IFRC 89.2% larger than EFRC after correction here; EFRC 4.9% larger than IFRC there",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "All five numbers reproduce against Mayer et al. 2015 Tables 1-2, row 'standing 2m', and against Table 1 here (check ids s1-ratio-2015-*, s1-ifrc-vs-efrc, s1-2015-efrc-vs-ifrc).",
+      "citation": "Model Discussion, p. 6",
+      "mismatch": {
+        "kind": "numeric",
+        "reported": "'Overall Mayer et al. reported errors before correction 4.8 times larger for EFRC, 1.9 for IFRC and 3.7 for FRC'",
+        "observed": "4.76, 1.90, 3.69 if 'overall' means the RealWorld column alone; 5.21, 1.97, 3.43 if it means the average over both environments, which is how 'overall' is used elsewhere in the paper",
+        "delta": "+0.41 on EFRC under the other reading"
+      }
+    },
+    {
+      "claim": "Design and sample arithmetic: 7x5 = 35 targets, 35 x 6 x 2 = 420 trials, x 20 participants = 8,400 postures, 420/4 = 105 gestures per session, 6 conditions x 35 x 2 = 420 trials in Study 2, grid spacing = screen dimension / (n-1)",
+      "loop": "inner",
+      "outcome": "verified",
+      "evidence": "Every count closes exactly (check ids design-*), including the spacing: 269.4/6 = 44.9 cm and 136.2/4 = 34.05 cm, which also recovers the digit the PDF's text layer drops in '34.cm'.",
+      "citation": "Study Design pp. 3-4 and p. 7; Apparatus p. 4; Results p. 5"
+    },
+    {
+      "claim": "Data-collection study: 20 participants (4 female, M = 22.1 years), 420 mid-air pointing gestures each, in a real room and in a VR replica, tracked by OptiTrack with 7 rigid bodies",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Requires human participants: the measurement is where a person freely chooses to point when asked to point as they naturally would. Not attempted and not simulated.",
+      "citation": "Data Collection Study, pp. 3-5"
+    },
+    {
+      "claim": "Evaluation study: 16 new participants in a 2x2x2 within-subjects selection task validating the correction models in real time",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Requires human participants; the effects of interest (cursor, correction, environment) are defined only relative to human behaviour. Not attempted and not simulated.",
+      "citation": "Evaluation, pp. 7-8"
+    },
+    {
+      "claim": "Raw NASA-TLX administered after every session in both studies as a fatigue and workload check",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Subjective workload can only be reported by a participant.",
+      "citation": "Procedure p. 5; Results p. 8"
+    },
+    {
+      "claim": "Eye-dominance screening of every participant with the Miles and Porta tests",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "A physical perceptual test administered to a person.",
+      "citation": "Participants, pp. 5 and 8"
+    },
+    {
+      "claim": "Fourteen participant-specific anthropometric measurements and the avatar dimensions and bone structure fitted from them",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "An experimenter measuring a body with a tape and a laser measurement tool before the session.",
+      "citation": "Apparatus, p. 4; Procedure, p. 5"
+    },
+    {
+      "claim": "Informed consent and demographic questionnaire at the start of each session",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Human research procedure.",
+      "citation": "Procedure, pp. 5 and 8"
+    },
+    {
+      "claim": "Recruitment and eligibility: university volunteer pool, right-handed only, no locomotor coordination problems",
+      "loop": "outer",
+      "outcome": "not_scored",
+      "evidence": "Sampling humans.",
+      "citation": "Participants, pp. 5 and 8"
+    }
+  ],
+  "decisions": [
+    {
+      "question": "How are the samples inside the 100-900 ms window combined into a single pointing posture?",
+      "where": "Preprocessing, p. 5: 'we used the samples between 100ms and 900ms' - a window is given, an aggregator is not",
+      "assumed": "Arithmetic mean of every tracked coordinate, then cast the ray (mean-then-cast, not cast-then-mean)",
+      "sensitivity": "Moderate. The two orders differ by second-order terms in the tremor amplitude the paper itself discusses (8-12 Hz); negligible for EFRC, larger for IFRC and FRC where 1 degree of direction error is about 3.5 cm on the screen at 2 m"
+    },
+    {
+      "question": "Is the 100-900 ms window measured from the button press or from target onset?",
+      "where": "Procedure, p. 5: participants 'click ... when they started to hold a gesture' and 'the target disappeared after one second' - both define a plausible zero",
+      "assumed": "From the button press that starts the one-second hold",
+      "sensitivity": "Moderate. Anchoring at target onset would place part of the window in the movement phase and inflate every offset"
+    },
+    {
+      "question": "Over which grouping is the two-standard-deviation outlier bound computed, and is it one- or two-sided?",
+      "where": "Preprocessing, p. 5: 'using two times the standard deviation as an upper bound', with no grouping",
+      "assumed": "Per ray cast x environment x target, one-sided on the distance, following the predecessor paper's explicit rule",
+      "sensitivity": "Moderate and unfalsifiable: global versus per-target filtering changes both the retained N and the mean offsets, and the paper reports neither the retained N nor the removal count"
+    },
+    {
+      "question": "What transform does 'we aligned the heads of the participants' apply?",
+      "where": "Preprocessing, p. 5",
+      "assumed": "Translate every tracked position of a participant by (grand-mean head position - that participant's mean head position)",
+      "sensitivity": "High for the fit: it defines the shared frame the universal polynomial lives in. A vertical-only shift, a full rigid alignment or a per-trial re-centring all yield different alpha distributions and therefore different coefficients"
+    },
+    {
+      "question": "Is the leave-one-out cross-validation leave-one-participant-out or leave-one-trial-out?",
+      "where": "Modeling, p. 6: 'we used leave-one-out cross-validation (LOOCV)'",
+      "assumed": "Leave-one-participant-out, following the predecessor paper, which states it explicitly; exposed as --cv participant|trial",
+      "sensitivity": "High. Leave-one-trial-out leaks each participant's own bias into training and inflates the apparent correction; the paper's claim is a user-independent model, which only leave-one-participant-out supports"
+    },
+    {
+      "question": "In what order are the correction percentages aggregated - per environment then per method, or pooled over all trials?",
+      "where": "Modeling, p. 6, which prints one percentage per method and one overall",
+      "assumed": "Mean of the two per-environment percentages, then the mean over the four methods",
+      "sensitivity": "Low but decisive for reproduction: this reading recovers 29.3% exactly, whereas pooling the cell means first gives 29.5%"
+    },
+    {
+      "question": "What reference frame defines alpha_pitch and alpha_yaw?",
+      "where": "Modeling, p. 6: angles 'between the ray cast and the body'; 'the body' is never defined",
+      "assumed": "World axes with +z the screen normal and the origin at the ray root",
+      "sensitivity": "High. A shoulder- or head-anchored frame rotates the domain of the polynomial, so coefficients are not transferable between conventions - and since none were published, a reader cannot detect the mismatch"
+    },
+    {
+      "question": "Which model family, fitted to which data, does Study 2 apply in real time?",
+      "where": "Apparatus, p. 7: 'the Unity scene was adjusted to support our model if needed'",
+      "assumed": "f4, per environment, for EFRC, fitted on all 20 Study-1 participants",
+      "sensitivity": "Moderate; this is the assumption most favourable to the paper, since f4 on all data is the strongest form of the model"
+    },
+    {
+      "question": "Was the correction used in Study 2 the cross-validated model or the all-data fit?",
+      "where": "Not stated anywhere in Evaluation, pp. 7-8",
+      "assumed": "The all-data fit",
+      "sensitivity": "Moderate. Either is user-independent with respect to the 16 new participants, but the all-data fit is better trained, so a LOOCV-based deployment would likely have shown a smaller improvement than 13.1%"
+    },
+    {
+      "question": "What instant of a Study-2 trial defines the recorded pointing endpoint?",
+      "where": "Evaluation, p. 7 defines TCT by the button press but never ties the accuracy measure to an instant",
+      "assumed": "The ray-screen intersection at the moment of the click",
+      "sensitivity": "High in the with-cursor conditions, where participants actively null their error: averaging a hold window instead would report a smaller offset than an instantaneous sample"
+    },
+    {
+      "question": "What are the cursor's size, update rate and smoothing?",
+      "where": "Apparatus, p. 7: 'a green crosshair as suggested by Olsen and Nielsen', with a 30 FPS tracking system stated on p. 4",
+      "assumed": "Not implemented; this repository renders nothing",
+      "sensitivity": "High for the paper's own result: cursor gain, latency and smoothing directly determine the 1.1-1.3 cm with-cursor offsets and the TCT increase the abstract claims"
+    },
+    {
+      "question": "Do the ANOVAs run on per-participant cell means, and was the skew of a distance measure addressed?",
+      "where": "Results, p. 8",
+      "assumed": "Per-participant cell means (the reported error df of 15 with 16 participants implies it); no transform, matching the paper's silence",
+      "sensitivity": "Low for the df, moderate for the p-values: Euclidean distances are right-skewed and bounded below at zero, so an untransformed RM-ANOVA is anti-conservative"
+    },
+    {
+      "question": "How is raw TLX scored - which subscales and what range?",
+      "where": "Procedure, p. 5 and Results, p. 8: 'a raw NASA-Task Load Index (raw TLX)'",
+      "assumed": "Unweighted mean of the six standard subscales on 0-100, consistent with the reported means of 35-40",
+      "sensitivity": "Low: the fatigue conclusion is a null result on either scoring"
+    },
+    {
+      "question": "Is the reported improvement a pooled ratio or a mean of per-environment ratios?",
+      "where": "Discussion, p. 9: 'the models overall improvement without a cursor was 13.1%'",
+      "assumed": "Pool the cell means first, then take the ratio - the only reading that yields 13.1% and 4.5%",
+      "sensitivity": "Low in magnitude (13.16% versus 12.98%), but it is the difference between reproducing the paper's figure and missing it"
+    },
+    {
+      "question": "How is the 90%-capture square defined - centred on the target or on the mean endpoint, per-axis or radial, empirical or parametric?",
+      "where": "Accuracy, p. 8: 'we will estimate target sizes to fit at least 90% of the mid-air pointing actions ... For simplicity we only fit a squared target shape'",
+      "assumed": "Centred on the target, per-axis, empirical 90th percentile of max(|dx|,|dy|)",
+      "sensitivity": "High. Centring on the mean endpoint removes the residual bias and shrinks every reported size by several cm; this is exactly the number a designer would act on"
+    },
+    {
+      "question": "How were target order and condition order randomised, and with what seed?",
+      "where": "Study Design, p. 4 ('the order of the targets was randomized while the order of ENVIRONMENT was counter-balanced') and Procedure, p. 7 ('CORRECTION and CURSOR were randomized within ENVIRONMENT')",
+      "assumed": "Uniform random target order per condition; no seed is recoverable",
+      "sensitivity": "Low for the means, moderate for order effects: randomising rather than counterbalancing CORRECTION x CURSOR leaves learning confounded with condition across a six-condition, one-hour session"
+    },
+    {
+      "question": "How are participants whose eye dominance was 'unclear' (4 of 20, 5 of 16) treated in the cyclops-eye construction?",
+      "where": "Participants, pp. 5 and 8 - the screening is reported, its use never is",
+      "assumed": "Treated identically; the cyclops eye is the midpoint between the eyes for everyone",
+      "sensitivity": "Low for the construction itself, but it renders the screening decorative: eye dominance is measured, reported, and then enters no model or analysis"
+    },
+    {
+      "question": "How many trials survived the outlier filter?",
+      "where": "Never reported; only the 8,400 postures collected (Results, p. 5)",
+      "assumed": "Unknown; the synthetic run retains about 95%",
+      "sensitivity": "Unfalsifiable: without the retained N neither Table 1's SDs nor any effect size can be validated, and the predecessor paper did report its removal counts"
+    },
+    {
+      "question": "What exactly is the vertical target spacing?",
+      "where": "Apparatus, p. 4, printed as '34.cm' - a digit is lost in the PDF text layer",
+      "assumed": "34.05 cm, recovered as 136.2 / (5 - 1)",
+      "sensitivity": "None: the reconstruction is exact and consistent with the horizontal spacing, 269.4 / (7 - 1) = 44.9 cm"
+    },
+    {
+      "question": "Does the choice of solver matter, given the paper fits a parameter-linear model with a 'nonlinear least-squares solver'?",
+      "where": "Modeling, p. 6",
+      "assumed": "Both implemented and compared: --solver lstsq and --solver nls",
+      "sensitivity": "None, and this is a positive finding: predictions agree to 6.5e-10 (src/selftest.py), so the paper's unusual solver choice cannot explain any discrepancy"
+    }
+  ],
+  "scorecard": [
+    {
+      "criterion": "code",
+      "found": false,
+      "url": null,
+      "searched": [
+        "the paper's own footnotes and full text (no code-availability statement)",
+        "https://dl.acm.org/doi/10.1145/3173574.3174227 (HTTP 403, not inspectable)",
+        "https://sven-mayer.com/publications/ (entry links only PDF, video, DOI)",
+        "https://nhenze.net/ and https://nhenze.net/data/",
+        "GitHub org interactionlab, all 22 repositories",
+        "GitHub user sven-mayer, 21 repositories",
+        "GitHub user valentin-schwind, 28 repositories",
+        "GitHub repository search for 'mid-air pointing offset correction'"
+      ]
+    },
+    {
+      "criterion": "data",
+      "found": false,
+      "url": null,
+      "searched": [
+        "the paper (no data-availability statement)",
+        "Zenodo API, '\"mid-air pointing\" offset correction'",
+        "OSF API, nodes and search endpoints",
+        "figshare API",
+        "DaRUS, the University of Stuttgart research data repository (0 hits for 'mid-air pointing')",
+        "arXiv API, exact title (0 entries, no ancillary files)",
+        "Semantic Scholar API (isOpenAccess false, no artifact links)",
+        "both author websites and all three GitHub accounts"
+      ]
+    },
+    {
+      "criterion": "license",
+      "found": false,
+      "url": null,
+      "searched": [
+        "no data or code was released, so there is nothing for a license to cover",
+        "the paper's copyright block, p. 1: ACM standard notice, rights licensed to ACM",
+        "https://github.com/interactionlab/htc-vive-marker-mount (the one auxiliary artifact; it is MIT-licensed, but it is 3D-printable mounts, not study material)",
+        "https://github.com/valentin-schwind/selfpresence (no license file found)"
+      ]
+    },
+    {
+      "criterion": "preregistration",
+      "found": false,
+      "url": null,
+      "searched": [
+        "the paper's full text: no preregistration, hypothesis-registration or ethics-approval statement",
+        "OSF registries via the OSF API, under all four author names",
+        "the authors' publication pages"
+      ]
+    },
+    {
+      "criterion": "supplement",
+      "found": true,
+      "url": "https://github.com/interactionlab/htc-vive-marker-mount",
+      "searched": [
+        "footnote 1, p. 4 -> https://github.com/interactionlab/htc-vive-marker-mount (HTTP 200, live, MIT, 3D models of the custom OptiTrack marker mounts plus a bill of materials)",
+        "footnote 2, p. 5 -> https://github.com/valentin-schwind/selfpresence (HTTP 200, live, the androgynous virtual hand models used in VR)",
+        "a CHI video figure is linked from the first author's publication page but returned HTTP 429 from this environment and is therefore unverified",
+        "neither released artifact is study material: no stimuli, questionnaire, Unity scene, data or model"
+      ]
+    }
+  ],
+  "released": [
+    {
+      "where": "Paper footnote 1, p. 4",
+      "what": "3D models of the custom OptiTrack marker mounts for the arm, hand, index finger and HTC Vive, with a bill of materials",
+      "result": "found",
+      "url": "https://github.com/interactionlab/htc-vive-marker-mount"
+    },
+    {
+      "where": "Paper footnote 2, p. 5",
+      "what": "The androgynous virtual hand models used to represent participants in VR",
+      "result": "found",
+      "url": "https://github.com/valentin-schwind/selfpresence"
+    },
+    {
+      "where": "The paper's own text: data- and code-availability statements",
+      "what": "Any statement of where the postures, trials, analysis code or fitted coefficients can be obtained",
+      "result": "none",
+      "url": "https://nhenze.net/uploads/The-Effect-of-Offset-Correction-and-Cursor-on-Mid-Air-Pointing-in-Real-and-Virtual-Environments.pdf"
+    },
+    {
+      "where": "First author's publication page (fetched, HTTP 200)",
+      "what": "A data or code link for this paper; the entry offers only PDF, YouTube video and DOI",
+      "result": "none",
+      "url": "https://sven-mayer.com/publications/"
+    },
+    {
+      "where": "Last author's data page (fetched, HTTP 200)",
+      "what": "A dataset for this paper; the page hosts only an unrelated mobile touch-events dataset",
+      "result": "none",
+      "url": "https://nhenze.net/data/"
+    },
+    {
+      "where": "GitHub organisation interactionlab, full repository listing (22 repositories)",
+      "what": "A repository for this paper; the closest are pointing-in-vr-hands (CHI PLAY '18, Unity only) and Deictic-Pointing-in-VR (CHI '20, has data but is a different study)",
+      "result": "none",
+      "url": "https://github.com/orgs/interactionlab/repositories"
+    },
+    {
+      "where": "GitHub user sven-mayer (21 repositories) and valentin-schwind (28 repositories)",
+      "what": "Analysis code or data for this paper",
+      "result": "none",
+      "url": "https://github.com/sven-mayer?tab=repositories"
+    },
+    {
+      "where": "Zenodo (API query)",
+      "what": "A deposited dataset or software record by these authors for this paper",
+      "result": "none",
+      "url": "https://zenodo.org/api/records?q=%22mid-air%20pointing%22%20offset%20correction"
+    },
+    {
+      "where": "OSF (API queries on nodes and search)",
+      "what": "A project, dataset or preregistration",
+      "result": "none",
+      "url": "https://api.osf.io/v2/nodes/?filter[title]=pointing"
+    },
+    {
+      "where": "figshare (API search)",
+      "what": "A deposited dataset",
+      "result": "none",
+      "url": "https://api.figshare.com/v2/articles/search"
+    },
+    {
+      "where": "DaRUS, University of Stuttgart research data repository (API search)",
+      "what": "An institutional deposit of the pointing data",
+      "result": "none",
+      "url": "https://darus.uni-stuttgart.de/api/search?q=%22mid-air+pointing%22&type=dataset"
+    },
+    {
+      "where": "arXiv (API query on the exact title)",
+      "what": "A preprint with ancillary files",
+      "result": "none",
+      "url": "http://export.arxiv.org/api/query?search_query=all:%22Offset%20Correction%20and%20Cursor%20on%20Mid-Air%20Pointing%22"
+    },
+    {
+      "where": "ACM Digital Library landing page and supplement endpoint",
+      "what": "Supplementary material, artifact badges, auxiliary files; not inspectable from here - HTTP 403 to non-browser clients, and the DOI resolver is unfetchable. No supplement is referenced by the paper, the authors' pages or the Semantic Scholar record",
+      "result": "none",
+      "url": "https://dl.acm.org/doi/10.1145/3173574.3174227"
+    }
+  ]
+}
