@@ -1,0 +1,3 @@
+__pycache__/
+results/*_trials.csv
+*.pyc

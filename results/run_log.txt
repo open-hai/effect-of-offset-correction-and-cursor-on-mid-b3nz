@@ -1,0 +1,117 @@
+inner-loop self-test
+  f4 basis == Equation 1 (15 terms, complete bivariate quartic)   ok
+  lstsq vs scipy nonlinear least_squares: max |dy| = 6.47e-10   ok
+  angle round-trip and screen intersection exact on the 7x5 grid  ok
+  90%-capture square recovers the analytic value (11.69 vs 11.69 cm)   ok
+  synthetic bias field is reduced by LOOCV correction for every ray cast   ok
+    (synthetic-only numbers: overall correction 69.0%, 3266 trials)
+all self-tests passed
+wrote /tmp/repro-data/synthetic_study1.csv and /tmp/repro-data/synthetic_study2.csv
+Study 1 pipeline on /tmp/repro-data/synthetic_study1.csv
+  trials after windowing/aggregation/outlier removal: 32111
+  ray casts computed: EFRC, IFRC, FRC, HRC
+  offset before / after correction (cm), by method x environment:
+    EFRC  RealWorld       n= 3954    12.12 ->    6.30  ( 48.0%)
+    EFRC  VirtualReality  n= 3944    10.89 ->    6.30  ( 42.2%)
+    FRC   RealWorld       n= 4033    36.55 ->    6.18  ( 83.1%)
+    FRC   VirtualReality  n= 3985    30.91 ->    6.15  ( 80.1%)
+    HRC   RealWorld       n= 4050     8.97 ->    6.46  ( 28.1%)
+    HRC   VirtualReality  n= 4041     8.44 ->    6.49  ( 23.1%)
+    IFRC  RealWorld       n= 4075    18.29 ->    6.58  ( 64.0%)
+    IFRC  VirtualReality  n= 4029    16.01 ->    6.59  ( 58.9%)
+  overall correction (f4, leave-one-participant-out CV): 53.4%
+  model family comparison (overall % correction): f1=50.5%, f2=50.6%, f3=51.0%, f4=53.4%
+  wrote results/synthetic_study1_figure4.png (Figure 4 redrawn)
+  wrote results/synthetic_study1_study1.json
+Study 2 pipeline on /tmp/repro-data/synthetic_study2.csv
+  RM-ANOVA on distance:
+    environment                            F(1,15)=   0.020  p=0.8892
+    correction                             F(1,15)=  25.206  p=0.0002
+    cursor                                 F(1,15)=1010.771  p=0.0000
+    environment:correction                 F(1,15)=   0.771  p=0.3937
+    environment:cursor                     F(1,15)=   0.020  p=0.8881
+    correction:cursor                      F(1,15)=  11.941  p=0.0035
+    environment:correction:cursor          F(1,15)=   4.314  p=0.0554
+  RM-ANOVA on tct:
+    environment                            F(1,15)=   0.526  p=0.4794
+    correction                             F(1,15)=   0.206  p=0.6565
+    cursor                                 F(1,15)= 515.410  p=0.0000
+    environment:correction                 F(1,15)=   0.059  p=0.8120
+    environment:cursor                     F(1,15)=   0.001  p=0.9718
+    correction:cursor                      F(1,15)=   1.201  p=0.2904
+    environment:correction:cursor          F(1,15)=   0.257  p=0.6195
+  correction improvement:
+    cursor=False: pooled 7.3%, mean-of-ratios 7.3%, RealWorld 5.5%, VirtualWorld 9.1%
+    cursor=True: pooled 8.5%, mean-of-ratios 8.4%, RealWorld 12.1%, VirtualWorld 4.8%
+  square target side holding 90% of pointing actions (cm):
+    env=RealWorld     correction=False cursor=False 18.8
+    env=RealWorld     correction=False cursor=True  3.7
+    env=RealWorld     correction=True  cursor=False 17.6
+    env=RealWorld     correction=True  cursor=True  3.2
+    env=VirtualWorld  correction=False cursor=False 19.2
+    env=VirtualWorld  correction=False cursor=True  3.6
+    env=VirtualWorld  correction=True  cursor=False 17.2
+    env=VirtualWorld  correction=True  cursor=True  3.5
+  wrote results/synthetic_study2_study2.json
+consistent     s1-mean-EFRC                                            reported   9.33 | recomputed       9.33
+consistent     s1-remaining-EFRC                                       reported    8.2 | recomputed      8.215
+consistent     s1-correction-EFRC                                      reported   10.9 | recomputed    10.9615
+consistent     s1-mean-IFRC                                            reported  28.09 | recomputed     28.085
+consistent     s1-remaining-IFRC                                       reported   14.0 | recomputed     14.035
+consistent     s1-correction-IFRC                                      reported   50.1 | recomputed    50.1081
+consistent     s1-mean-FRC                                             reported   65.0 | recomputed       65.0
+consistent     s1-remaining-FRC                                        reported   28.6 | recomputed     28.595
+consistent     s1-correction-FRC                                       reported   55.9 | recomputed    55.9561
+consistent     s1-mean-HRC                                             reported  42.46 | recomputed      42.46
+consistent     s1-remaining-HRC                                        reported   42.3 | recomputed     42.385
+consistent     s1-correction-HRC                                       reported    0.2 | recomputed     0.1485
+consistent     s1-correction-overall                                   reported   29.3 | recomputed    29.2936
+consistent     s1-vr-efrc                                              reported    0.5 | recomputed     0.4734
+consistent     s1-ifrc-vs-efrc                                         reported   89.2 | recomputed    89.1521
+consistent     s1-hrc-vr-direction                                     reported   -   | recomputed    -0.1059
+consistent     s1-ratio-2015-EFRC                                      reported    4.8 | recomputed       4.76
+consistent     s1-ratio-2015-IFRC                                      reported    1.9 | recomputed     1.9012
+consistent     s1-ratio-2015-FRC                                       reported    3.7 | recomputed     3.6941
+consistent     s1-2015-efrc-vs-ifrc                                    reported    4.9 | recomputed     4.8571
+consistent     s2-improve-rw                                           reported   16.3 | recomputed    16.3842
+consistent     s2-improve-vr                                           reported    9.5 | recomputed     9.5761
+consistent     s2-improve-overall                                      reported   13.1 | recomputed    13.1599
+consistent     s2-improve-cursor                                       reported    4.5 | recomputed     4.5082
+consistent     s2-target-shrink-mean                                   reported    8.5 | recomputed      8.475
+consistent     s2-tct-nocursor-identical-RealWorld                     reported    0.0 | recomputed        0.0
+consistent     s2-tct-nocursor-identical-VirtualWorld                  reported    0.0 | recomputed        0.0
+NOT DERIVABLE  s2-target-size-no_cursor-RW                             reported   17.6 | recomputed      22.02
+NOT DERIVABLE  s2-target-size-no_cursor-VR                             reported   18.8 | recomputed      19.81
+NOT DERIVABLE  s2-target-size-cursor-RW                                reported    4.1 | recomputed       3.55
+NOT DERIVABLE  s2-target-size-cursor-VR                                reported    4.5 | recomputed       4.04
+consistent     design-s1-trials                                        reported    420 | recomputed        420
+consistent     design-s1-postures                                      reported   8400 | recomputed       8400
+consistent     design-s1-sessions                                      reported    105 | recomputed      105.0
+consistent     design-s1-grid                                          reported     35 | recomputed         35
+consistent     design-s2-trials                                        reported    420 | recomputed        420
+consistent     design-spacing-x                                        reported   44.9 | recomputed       44.9
+consistent     design-spacing-y                                        reported   -   | recomputed      34.05
+consistent     design-s2-anova-df                                      reported     15 | recomputed         15
+consistent     stat-study1-raw-TLX-over-4-sessions                     reported  0.986 | recomputed    0.98635
+consistent     stat-study1-EFRC-RealWorld-vs-VirtualReality            reported  0.026 | recomputed    0.02584
+consistent     stat-study1-FRC-RealWorld-vs-VirtualReality             reported  0.001 | recomputed      2e-05
+consistent     stat-study1-HRC-RealWorld-vs-VirtualReality             reported  0.001 | recomputed      2e-05
+consistent     stat-study1-IFRC-RealWorld-vs-VirtualReality            reported  0.512 | recomputed     0.5118
+INCONSISTENT   stat-study2-raw-TLX-over-6-sessions                     reported  0.659 | recomputed    0.66325
+INCONSISTENT   stat-study2-accuracy:-CORRECTION                        reported  0.027 | recomputed    0.03576
+consistent     stat-study2-accuracy:-CURSOR                            reported  0.001 | recomputed        0.0
+INCONSISTENT   stat-study2-accuracy:-ENVIRONMENT                       reported  0.027 | recomputed    0.27209
+INCONSISTENT   stat-study2-accuracy:-CORRECTION-x-ENVIRONMENT          reported   0.36 | recomputed    0.33718
+consistent     stat-study2-accuracy:-CURSOR-x-ENVIRONMENT              reported   0.07 | recomputed    0.07053
+consistent     stat-study2-accuracy:-CORRECTION-x-CURSOR               reported  0.048 | recomputed    0.04893
+consistent     stat-study2-accuracy:-CORRECTION-x-CURSOR-x-ENVIRONMENT reported  0.175 | recomputed    0.17469
+consistent     stat-study2-TCT:-CORRECTION                             reported  0.697 | recomputed     0.6966
+INCONSISTENT   stat-study2-TCT:-ENVIRONMENT                            reported  0.956 | recomputed    0.95041
+consistent     stat-study2-TCT:-CURSOR                                 reported  0.013 | recomputed    0.01349
+INCONSISTENT   stat-study2-TCT:-CURSOR-x-ENVIRONMENT                   reported  0.001 | recomputed    0.00128
+consistent     stat-study2-TCT:-CORRECTION-x-CURSOR                    reported  0.799 | recomputed    0.79927
+consistent     stat-study2-TCT:-CORRECTION-x-ENVIRONMENT               reported  0.274 | recomputed    0.27369
+consistent     stat-study2-TCT:-CORRECTION-x-CURSOR-x-ENVIRONMENT      reported  0.298 | recomputed    0.29788
+
+59 checks: 49 consistent, 6 inconsistent, 4 not derivable from the paper.
+wrote results/paper_checks.json and results/paper_checks.md

@@ -1,0 +1,1318 @@
+{
+  "cells": [
+    {
+      "participant": 1,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.392025829474105,
+      "tct": 1.5492631262219814
+    },
+    {
+      "participant": 1,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1831450517311524,
+      "tct": 1.7965210401980958
+    },
+    {
+      "participant": 1,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.335561501335505,
+      "tct": 1.615814290807595
+    },
+    {
+      "participant": 1,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.0300011468252332,
+      "tct": 1.8157217487839594
+    },
+    {
+      "participant": 1,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.565849649058994,
+      "tct": 1.5830107429049174
+    },
+    {
+      "participant": 1,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1025267567482864,
+      "tct": 1.741362392527509
+    },
+    {
+      "participant": 1,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.128255535192102,
+      "tct": 1.544243642535651
+    },
+    {
+      "participant": 1,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.9817467911146691,
+      "tct": 1.862777968491622
+    },
+    {
+      "participant": 2,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.358549417309442,
+      "tct": 1.5008914768975057
+    },
+    {
+      "participant": 2,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2405857443175528,
+      "tct": 1.7041008869334628
+    },
+    {
+      "participant": 2,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.567972398639508,
+      "tct": 1.6654992218330131
+    },
+    {
+      "participant": 2,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.188925863022988,
+      "tct": 1.828001033606574
+    },
+    {
+      "participant": 2,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.05451287997785,
+      "tct": 1.6354485748040537
+    },
+    {
+      "participant": 2,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.172689569649044,
+      "tct": 1.717507986584975
+    },
+    {
+      "participant": 2,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.269325494540709,
+      "tct": 1.651775523665846
+    },
+    {
+      "participant": 2,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.0742950390080874,
+      "tct": 1.8472949857629553
+    },
+    {
+      "participant": 3,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 4.521930566823819,
+      "tct": 1.6096642504062504
+    },
+    {
+      "participant": 3,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 0.8032003372630184,
+      "tct": 1.8589684079788729
+    },
+    {
+      "participant": 3,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 3.9625155070315885,
+      "tct": 1.5362391267592004
+    },
+    {
+      "participant": 3,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.7000475361858736,
+      "tct": 1.9452598317994667
+    },
+    {
+      "participant": 3,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 4.337824665823705,
+      "tct": 1.6058932547222808
+    },
+    {
+      "participant": 3,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 0.864535521903501,
+      "tct": 1.8326939077767637
+    },
+    {
+      "participant": 3,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 3.4422667346360822,
+      "tct": 1.5355346048127172
+    },
+    {
+      "participant": 3,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.7131701338483826,
+      "tct": 1.870552321883669
+    },
+    {
+      "participant": 4,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.728468666259431,
+      "tct": 1.5933463312835014
+    },
+    {
+      "participant": 4,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1953277428191809,
+      "tct": 1.75298591820763
+    },
+    {
+      "participant": 4,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.699519444978684,
+      "tct": 1.5772269763308002
+    },
+    {
+      "participant": 4,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.027844959690515,
+      "tct": 1.755110252795479
+    },
+    {
+      "participant": 4,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.240744828482496,
+      "tct": 1.6882160011113605
+    },
+    {
+      "participant": 4,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.0481747559202734,
+      "tct": 1.8578662724281076
+    },
+    {
+      "participant": 4,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.475087751996893,
+      "tct": 1.6172766032867285
+    },
+    {
+      "participant": 4,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.061134022382629,
+      "tct": 1.7557209951095387
+    },
+    {
+      "participant": 5,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.600145668344988,
+      "tct": 1.703388322609019
+    },
+    {
+      "participant": 5,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.0940839582996662,
+      "tct": 1.8304936508948055
+    },
+    {
+      "participant": 5,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.487012794083625,
+      "tct": 1.59710426728385
+    },
+    {
+      "participant": 5,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.9699383599451034,
+      "tct": 1.7895194016275828
+    },
+    {
+      "participant": 5,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.740167324156805,
+      "tct": 1.632712933453245
+    },
+    {
+      "participant": 5,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.0726177612387335,
+      "tct": 1.816521767883064
+    },
+    {
+      "participant": 5,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.7485832533095955,
+      "tct": 1.6469257844849934
+    },
+    {
+      "participant": 5,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.077071297966282,
+      "tct": 1.8250339931961204
+    },
+    {
+      "participant": 6,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.804463407359667,
+      "tct": 1.546757778922174
+    },
+    {
+      "participant": 6,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.35796871426177,
+      "tct": 1.7123933174967418
+    },
+    {
+      "participant": 6,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 7.215343006370822,
+      "tct": 1.5850712863474983
+    },
+    {
+      "participant": 6,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.1388725654505683,
+      "tct": 1.784880107323573
+    },
+    {
+      "participant": 6,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 7.5655104149653445,
+      "tct": 1.5765076565311453
+    },
+    {
+      "participant": 6,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.381247487611151,
+      "tct": 1.7320303121764102
+    },
+    {
+      "participant": 6,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.875499008085033,
+      "tct": 1.4800119215624532
+    },
+    {
+      "participant": 6,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.1908805886684264,
+      "tct": 1.7180549605532032
+    },
+    {
+      "participant": 7,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.396809451391134,
+      "tct": 1.5668985286098498
+    },
+    {
+      "participant": 7,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.0391683375625094,
+      "tct": 1.7921148557326714
+    },
+    {
+      "participant": 7,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 4.7798051803518184,
+      "tct": 1.5882373098810303
+    },
+    {
+      "participant": 7,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.9137971946191266,
+      "tct": 1.8405915678261864
+    },
+    {
+      "participant": 7,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.779000858367377,
+      "tct": 1.5982988725172365
+    },
+    {
+      "participant": 7,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 0.9596089573822469,
+      "tct": 1.6954748046502732
+    },
+    {
+      "participant": 7,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.333758067843779,
+      "tct": 1.5820353592593122
+    },
+    {
+      "participant": 7,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.8748034024305491,
+      "tct": 1.8803591746581918
+    },
+    {
+      "participant": 8,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.454346000249181,
+      "tct": 1.5994406635347245
+    },
+    {
+      "participant": 8,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1005964160645294,
+      "tct": 1.7907826445674924
+    },
+    {
+      "participant": 8,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.461589476458537,
+      "tct": 1.6991162070062475
+    },
+    {
+      "participant": 8,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.048280023723218,
+      "tct": 1.767449292599087
+    },
+    {
+      "participant": 8,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.028147818467978,
+      "tct": 1.618440579108472
+    },
+    {
+      "participant": 8,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.0515717238623026,
+      "tct": 1.8999225842903529
+    },
+    {
+      "participant": 8,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.276494564423346,
+      "tct": 1.6390144787881455
+    },
+    {
+      "participant": 8,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.064648213160672,
+      "tct": 1.867172200270802
+    },
+    {
+      "participant": 9,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.5620823215970745,
+      "tct": 1.5621619907861546
+    },
+    {
+      "participant": 9,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2043915362645372,
+      "tct": 1.7563432411886668
+    },
+    {
+      "participant": 9,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.056256123898666,
+      "tct": 1.5536349150582407
+    },
+    {
+      "participant": 9,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.1477058898840897,
+      "tct": 1.7702717179093415
+    },
+    {
+      "participant": 9,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.283322856703648,
+      "tct": 1.5341663410065027
+    },
+    {
+      "participant": 9,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.209195830978888,
+      "tct": 1.8477251901151857
+    },
+    {
+      "participant": 9,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.306161686793932,
+      "tct": 1.6564773297914785
+    },
+    {
+      "participant": 9,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.0904088901987279,
+      "tct": 1.8214567146319012
+    },
+    {
+      "participant": 10,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.843114280736178,
+      "tct": 1.6350763199307743
+    },
+    {
+      "participant": 10,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1029653300684288,
+      "tct": 1.879459434198534
+    },
+    {
+      "participant": 10,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.082753399811635,
+      "tct": 1.5600826747144878
+    },
+    {
+      "participant": 10,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.9254082199349897,
+      "tct": 1.8263619239906885
+    },
+    {
+      "participant": 10,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.308304705305843,
+      "tct": 1.6136939932265082
+    },
+    {
+      "participant": 10,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2316506542462637,
+      "tct": 1.8299777761285632
+    },
+    {
+      "participant": 10,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.214663386031333,
+      "tct": 1.5974566002811053
+    },
+    {
+      "participant": 10,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.1753947832877845,
+      "tct": 1.7647667984708075
+    },
+    {
+      "participant": 11,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.738245021145633,
+      "tct": 1.6251517427624635
+    },
+    {
+      "participant": 11,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.3847541933361995,
+      "tct": 1.797281032946536
+    },
+    {
+      "participant": 11,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 7.002704464577462,
+      "tct": 1.601183750319626
+    },
+    {
+      "participant": 11,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.3099368101589801,
+      "tct": 1.752707002816998
+    },
+    {
+      "participant": 11,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.996377576987477,
+      "tct": 1.5743460486646879
+    },
+    {
+      "participant": 11,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.3084635560061788,
+      "tct": 1.7993568911351243
+    },
+    {
+      "participant": 11,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.9110166443731345,
+      "tct": 1.6347132500823958
+    },
+    {
+      "participant": 11,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.2812361067458913,
+      "tct": 1.8469517475581114
+    },
+    {
+      "participant": 12,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.164175627756383,
+      "tct": 1.6158536127899208
+    },
+    {
+      "participant": 12,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2213573221423597,
+      "tct": 1.84975830151669
+    },
+    {
+      "participant": 12,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.535717430625915,
+      "tct": 1.6332654186197653
+    },
+    {
+      "participant": 12,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.0981273345987945,
+      "tct": 1.8660363468104826
+    },
+    {
+      "participant": 12,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.688833847726513,
+      "tct": 1.609142721953327
+    },
+    {
+      "participant": 12,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1443171893358628,
+      "tct": 1.76894858056248
+    },
+    {
+      "participant": 12,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.070114653544,
+      "tct": 1.5940474956643045
+    },
+    {
+      "participant": 12,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.1636809455308323,
+      "tct": 1.8454612077576724
+    },
+    {
+      "participant": 13,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.904844563800959,
+      "tct": 1.554850205576717
+    },
+    {
+      "participant": 13,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2226444312397697,
+      "tct": 1.8849314154844454
+    },
+    {
+      "participant": 13,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.149695407807694,
+      "tct": 1.5938029120291841
+    },
+    {
+      "participant": 13,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.9784329305828854,
+      "tct": 1.8207522338400963
+    },
+    {
+      "participant": 13,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.125152466493597,
+      "tct": 1.5904377238895386
+    },
+    {
+      "participant": 13,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1216938195778698,
+      "tct": 1.6879658168040053
+    },
+    {
+      "participant": 13,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.668332747793705,
+      "tct": 1.6532798402829678
+    },
+    {
+      "participant": 13,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.0120305351908128,
+      "tct": 1.813409320993003
+    },
+    {
+      "participant": 14,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.383108330032428,
+      "tct": 1.7170559388291968
+    },
+    {
+      "participant": 14,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2358576309369007,
+      "tct": 1.8710903054054622
+    },
+    {
+      "participant": 14,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.644119518574386,
+      "tct": 1.5329339242076379
+    },
+    {
+      "participant": 14,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.008861941464817,
+      "tct": 1.7370138226121783
+    },
+    {
+      "participant": 14,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.717012370538746,
+      "tct": 1.6309097632139933
+    },
+    {
+      "participant": 14,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.1791604761906216,
+      "tct": 1.9015089183857583
+    },
+    {
+      "participant": 14,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.358855673113056,
+      "tct": 1.5193893358404185
+    },
+    {
+      "participant": 14,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.2680519578484324,
+      "tct": 1.7948342495413112
+    },
+    {
+      "participant": 15,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.7305582252959635,
+      "tct": 1.6314072726322244
+    },
+    {
+      "participant": 15,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.227040308486666,
+      "tct": 1.853806610153639
+    },
+    {
+      "participant": 15,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.682541607559324,
+      "tct": 1.6645166448719297
+    },
+    {
+      "participant": 15,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 0.9289052174746141,
+      "tct": 1.8826999612952076
+    },
+    {
+      "participant": 15,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 5.804959965551823,
+      "tct": 1.5486442958065674
+    },
+    {
+      "participant": 15,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.0976886617971162,
+      "tct": 1.8677899376009683
+    },
+    {
+      "participant": 15,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 5.127692325741543,
+      "tct": 1.542627264124427
+    },
+    {
+      "participant": 15,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.0400043601434699,
+      "tct": 1.7309892027680887
+    },
+    {
+      "participant": 16,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.379240575316558,
+      "tct": 1.6313071869621656
+    },
+    {
+      "participant": 16,
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.261933299090041,
+      "tct": 1.7513787608887792
+    },
+    {
+      "participant": 16,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.0138270663883615,
+      "tct": 1.701759407723042
+    },
+    {
+      "participant": 16,
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.1822294864741658,
+      "tct": 1.9142202197389837
+    },
+    {
+      "participant": 16,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "distance": 6.717681107647814,
+      "tct": 1.565576949116772
+    },
+    {
+      "participant": 16,
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "distance": 1.2227050743785903,
+      "tct": 1.7385432220371786
+    },
+    {
+      "participant": 16,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "distance": 6.825813056960935,
+      "tct": 1.5831205429387347
+    },
+    {
+      "participant": 16,
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "distance": 1.2295895781486208,
+      "tct": 1.753149878968865
+    }
+  ],
+  "anova": {
+    "distance": [
+      {
+        "effect": "environment",
+        "F": 0.0200619201674997,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.889249093290865
+      },
+      {
+        "effect": "correction",
+        "F": 25.205941106736166,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.00015219053535060016
+      },
+      {
+        "effect": "cursor",
+        "F": 1010.7706790949444,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 3.526056651983924e-15
+      },
+      {
+        "effect": "environment:correction",
+        "F": 0.7712930188871616,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.39366780076029667
+      },
+      {
+        "effect": "environment:cursor",
+        "F": 0.02048223329741972,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.8881032780629744
+      },
+      {
+        "effect": "correction:cursor",
+        "F": 11.941483714771891,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.003530702133236467
+      },
+      {
+        "effect": "environment:correction:cursor",
+        "F": 4.314243204048998,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.05538956614501483
+      }
+    ],
+    "tct": [
+      {
+        "effect": "environment",
+        "F": 0.52602709745365,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.4794449045716027
+      },
+      {
+        "effect": "correction",
+        "F": 0.20587845923860387,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.6565127712637836
+      },
+      {
+        "effect": "cursor",
+        "F": 515.4102452383917,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 4.99166450739468e-13
+      },
+      {
+        "effect": "environment:correction",
+        "F": 0.05858530085242671,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.8120240573397793
+      },
+      {
+        "effect": "environment:cursor",
+        "F": 0.0012904105210567816,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.9718180212541352
+      },
+      {
+        "effect": "correction:cursor",
+        "F": 1.2012712513008992,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.2903534025405537
+      },
+      {
+        "effect": "environment:correction:cursor",
+        "F": 0.2571226096222609,
+        "df1": 1.0,
+        "df2": 15.0,
+        "p": 0.6194766947942201
+      }
+    ]
+  },
+  "tables": {
+    "distance": [
+      {
+        "environment": "RealWorld",
+        "correction": false,
+        "cursor": false,
+        "mean": 5.997631747055809,
+        "std": 0.6124662294825827
+      },
+      {
+        "environment": "RealWorld",
+        "correction": false,
+        "cursor": true,
+        "mean": 1.1796887721177676,
+        "std": 0.13542852703702385
+      },
+      {
+        "environment": "RealWorld",
+        "correction": true,
+        "cursor": false,
+        "mean": 5.667308395530846,
+        "std": 0.8043775994853134
+      },
+      {
+        "environment": "RealWorld",
+        "correction": true,
+        "cursor": true,
+        "mean": 1.0373322175022477,
+        "std": 0.14303109857726345
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": false,
+        "cursor": false,
+        "mean": 6.122087708516,
+        "std": 0.7969098758181119
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": false,
+        "cursor": true,
+        "mean": 1.1354904873016831,
+        "std": 0.12692433192715605
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": true,
+        "cursor": false,
+        "mean": 5.564495036523699,
+        "std": 0.8473786957526699
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": true,
+        "cursor": true,
+        "mean": 1.0811341653546418,
+        "std": 0.14603588565282852
+      }
+    ],
+    "tct": [
+      {
+        "environment": "RealWorld",
+        "correction": false,
+        "cursor": false,
+        "mean": 1.602657171797164,
+        "std": 0.05674180894303478
+      },
+      {
+        "environment": "RealWorld",
+        "correction": false,
+        "cursor": true,
+        "mean": 1.8051506139870328,
+        "std": 0.05856799823646668
+      },
+      {
+        "environment": "RealWorld",
+        "correction": true,
+        "cursor": false,
+        "mean": 1.6065930208620718,
+        "std": 0.05324608781216799
+      },
+      {
+        "environment": "RealWorld",
+        "correction": true,
+        "cursor": true,
+        "mean": 1.8185372790859928,
+        "std": 0.06008545603352902
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": false,
+        "cursor": false,
+        "mean": 1.600340403251913,
+        "std": 0.03782209821202783
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": false,
+        "cursor": true,
+        "mean": 1.7959497725679199,
+        "std": 0.07097896894045586
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": true,
+        "cursor": false,
+        "mean": 1.5923705985876049,
+        "std": 0.05483697866190561
+      },
+      {
+        "environment": "VirtualWorld",
+        "correction": true,
+        "cursor": true,
+        "mean": 1.8123741075384914,
+        "std": 0.05298711824373248
+      }
+    ]
+  },
+  "target_sizes": [
+    {
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": false,
+      "target_side_cm_90pct": 18.83871457732983
+    },
+    {
+      "environment": "RealWorld",
+      "correction": false,
+      "cursor": true,
+      "target_side_cm_90pct": 3.7121407935713346
+    },
+    {
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": false,
+      "target_side_cm_90pct": 17.570559650690562
+    },
+    {
+      "environment": "RealWorld",
+      "correction": true,
+      "cursor": true,
+      "target_side_cm_90pct": 3.24976236544546
+    },
+    {
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": false,
+      "target_side_cm_90pct": 19.189814446723965
+    },
+    {
+      "environment": "VirtualWorld",
+      "correction": false,
+      "cursor": true,
+      "target_side_cm_90pct": 3.551725354234765
+    },
+    {
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": false,
+      "target_side_cm_90pct": 17.183319757264325
+    },
+    {
+      "environment": "VirtualWorld",
+      "correction": true,
+      "cursor": true,
+      "target_side_cm_90pct": 3.5019744399012396
+    }
+  ],
+  "correction_improvement": {
+    "False": {
+      "per_environment_pct": {
+        "RealWorld": 5.50756307582767,
+        "VirtualWorld": 9.107884410356846
+      },
+      "mean_of_ratios_pct": 7.307723743092257,
+      "pooled_pct": 7.326209379451128
+    },
+    "True": {
+      "per_environment_pct": {
+        "RealWorld": 12.06729757713662,
+        "VirtualWorld": 4.787034550699819
+      },
+      "mean_of_ratios_pct": 8.42716606391822,
+      "pooled_pct": 8.496658552992097
+    }
+  }
+}
