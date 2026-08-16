@@ -109,6 +109,48 @@ and the projector are apparatus, and apparatus is an obstacle to *collecting*
 data, not a reason to call the analysis unreproducible: the analysis is I1–I15,
 and it is blocked by the absent file, not by the absent hardware.
 
+### What a follow-up human study would have to cover
+
+Stated plainly, so that the scope of what this audit does *not* establish is not
+left to inference. To put the paper's claims back on evidence, a new study would
+have to re-collect O1 through O7 in full — nothing in `src/` substitutes for any
+of it:
+
+1. **Both samples, not one.** A modelling sample (O1: ~20 participants × 420
+   feedback-free pointing gestures at a 35-target grid from 2 m, counterbalanced
+   across RealWorld and VirtualReality) *and* a separate validation sample (O2:
+   ~16 **new** participants in the 2 × 2 × 2 CORRECTION × CURSOR × ENVIRONMENT
+   selection task). Reusing one sample for both would forfeit exactly the
+   external validity the paper's second study exists to establish.
+2. **The apparatus the measures presuppose.** Marker-based 6DOF tracking of the
+   head, both shoulders, upper arm, forearm, hand root and index finger, an HMD,
+   and a projector aligned to the same virtual scene — because the dependent
+   variable is a ray-screen intersection, not a click. `instrument.json`
+   → `servability` names, per component, which of the six criteria this fails
+   and why none of it is browser-servable.
+3. **The per-participant instrumentation.** The 14 anthropometric measurements
+   and the avatar fitted from them (O5), plus eye-dominance screening (O4) — and
+   this time a stated decision on what the screening is *for*, since in the
+   paper it is measured and then enters no model (D17).
+4. **The subjective and procedural layer.** Raw NASA-TLX after every session in
+   both studies (O3), informed consent and demographics (O6), and a specified
+   recruitment and eligibility procedure (O7) — right-handedness and "no
+   locomotor coordination problems" need an instrument, not an adjective.
+5. **The twenty decisions of §3, fixed in advance.** A re-run that leaves D1–D20
+   open reproduces the paper's ambiguity rather than its result. The four marked
+   *High* — LOOCV granularity (D5), the angle reference frame (D7), the recorded
+   endpoint instant (D10) and the target-size estimator (D15) — change the
+   headline numbers on their own.
+6. **The release the original lacks.** Postures, trials, fitted coefficients and
+   analysis code. Without the coefficients in particular (I5), a validated model
+   is still a model nobody else can apply.
+
+What such a study would settle, and this audit cannot: whether people really do
+point differently in VR, whether the correction genuinely buys 13.1 % without a
+cursor, and whether a cursor really trades the 0.2–0.4 s of extra selection time
+in Table 2 for the ~5 cm of accuracy in Table 3. This repository takes no
+position on any of the three.
+
 ---
 
 ## 3. Hidden decisions

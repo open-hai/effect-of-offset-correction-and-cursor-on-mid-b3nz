@@ -36,7 +36,9 @@ in files, not in prose alone:
 - **`REPRODUCIBILITY.md`** — the verdict, and first of all the per-component
   reproduction table: 15 inner-loop components, each marked verified / partial /
   blocked with its evidence or its specific blocker. Then the inner/outer
-  boundary, 20 hidden decisions, and the open-science scorecard.
+  boundary — including what a follow-up human study would have to cover, since
+  nothing here re-establishes it — 20 hidden decisions, and the open-science
+  scorecard.
 - **`SOURCES.md`** — the paper's identity and all 22 places I searched for
   artifacts, with what each one actually returned.
 - **`UNVERIFIED.md`** — everything I could not confirm, each with its blocker.
